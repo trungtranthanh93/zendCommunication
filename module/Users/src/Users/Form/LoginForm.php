@@ -6,41 +6,42 @@ use Zend\Form\Form;
 
 class LoginForm extends Form
 {
-
     public function __construct($name = null)
     {
         parent::__construct('Login');
         $this->setAttribute('method', 'post');
-        $this->setAttribute('enctype', 'multipart/form-data');
+        $this->setAttribute('enctype','multipart/form-data');
+
         
         $this->add(array(
             'name' => 'email',
             'attributes' => array(
-                'type' => 'email',
-                'required' => 'required'
+                'type'  => 'email',
+				'required' => 'required' 
             ),
             'options' => array(
-                'label' => 'Email'
-            )
-        ));
+                'label' => 'Email',
+            ),
+        )); 
         
-        $this->add(array(
+	$this->add(array(
             'name' => 'password',
             'attributes' => array(
-                'type' => 'password',
-                'required' => 'required'
+                'type'  => 'password',
+				'required' => 'required'                 
             ),
             'options' => array(
-                'label' => 'Password'
-            )
-        ));
-        
+                'label' => 'Password',
+            ),
+        )); 
+
+
         $this->add(array(
             'name' => 'submit',
             'attributes' => array(
-                'type' => 'submit',
+                'type'  => 'submit',
                 'value' => 'Login'
-            )
-        ));
+            ),
+        )); 
     }
 }

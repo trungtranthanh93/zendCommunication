@@ -5,66 +5,50 @@ use Zend\InputFilter\InputFilter;
 
 class RegisterFilter extends InputFilter
 {
-
     public function __construct()
     {
         $this->add(array(
-            'name' => 'email',
-            'required' => true,
+            'name'       => 'email',
+            'required'   => true,
             'validators' => array(
                 array(
-                    'name' => 'EmailAddress',
+                    'name'    => 'EmailAddress',
                     'options' => array(
                         'domain' => true,
-                    )
-                )
-            )
+                    ),
+                ),
+            ),
         ));
-        
+
         $this->add(array(
-            'name' => 'name',
-            'required' => true,
-            'filters' => array(
+            'name'       => 'name',
+            'required'   => true,
+            'filters'    => array(
                 array(
-                    'name' => 'StripTags'
-                )
+                    'name'    => 'StripTags',
+                ),
             ),
             'validators' => array(
                 array(
-                    'name' => 'StringLength',
+                    'name'    => 'StringLength',
                     'options' => array(
                         'encoding' => 'UTF-8',
-                        'min' => 2,
-                        'max' => 140,
-                        'message'=>array(
-                            \Zend\Validator\StringLength::TOO_LONG=>'Name can not be more than 140 characters long.',
-                            \Zend\Validator\StringLength::TOO_SHORT=>'Name is required.'
-                        ),
-                    )
-                )
-            )
+                        'min'      => 2,
+                        'max'      => 140,
+                    ),
+                ),
+            ),
         ));
-        
+
         $this->add(array(
-            'name' => 'password',
-            'required' => true
+            'name'       => 'password',
+            'required'   => true,
         ));
-        
+
         $this->add(array(
-            'name' => 'confirm_password',
-            'required' => true,
-            'validators' => array(
-                array(
-                    'name' => 'Identical',
-                    'options' => array(
-                        'token' => 'password',
-                        'messages' => array(
-					\Zend\Validator\Identical::NOT_SAME => 'Please enter same password',
-				),
-                    )
-                   
-                )
-            )
+            'name'       => 'confirm_password',
+            'required'   => true,
         ));
+
     }
 }

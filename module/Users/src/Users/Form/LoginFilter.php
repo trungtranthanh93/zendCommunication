@@ -5,24 +5,23 @@ use Zend\InputFilter\InputFilter;
 
 class LoginFilter extends InputFilter
 {
-
     public function __construct()
     {
         $this->add(array(
-            'name' => 'email',
-            'required' => true,
+            'name'       => 'email',
+            'required'   => true,
             'validators' => array(
                 array(
-                    'name' => 'EmailAddress',
+                    'name'    => 'EmailAddress',
                     'options' => array(
-                        'domain' => true
-                    )
-                )
-            )
+                        'domain' => true,
+                    ),
+                ),
+            ),
         ));
         $this->add(array(
-            'name' => 'password',
-            'required' => true
+            'name'       => 'password',
+            'required'   => true,
         ));
     }
 }
